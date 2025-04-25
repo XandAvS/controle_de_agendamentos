@@ -23,3 +23,4 @@ try{
 // atributo nome var255
 // atributo email var255
 // atributo senha var255
+// criar as tabelas necessarias pelo phpmyadmin

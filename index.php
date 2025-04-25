@@ -18,7 +18,7 @@
         </a>
         </div>
 </nav>
-<body class="container mt-5">
+<body>
     <div class="row">
         <div class="col-5 mt-5 mx-auto">
             <h1 class="mt-5 text-center">Sistema de controle</h1>
