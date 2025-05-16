@@ -1,0 +1,28 @@
+html{
+    color: #fff;
+    scroll-behavior: smooth; /*faz uma transição mais suave dentro da pagina quando usa os ancoras*/
+}
+body{
+    font-family: "Poppins", sans-serif;
+}
+.voltar{
+    background-color: #ff0000;
+    color: #fff;
+ 
+}
+.confirmar{
+    background-color: blue;
+    color: #fff;
+    
+}
+.nomenclaturas{
+    text-align: center;
+}
+.botoes{
+    text-align: center;
+}
+.cadastro{
+    /*background-color: #428ce2;*/
+    border-radius: 5px;
+    padding: 15px;
+}
