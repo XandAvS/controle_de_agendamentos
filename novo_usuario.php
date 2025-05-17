@@ -11,8 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         // PASSWORD_BCRYPT é o algoritimo para a criptografia
 
         // inserção no banco de dados
-        $stmt = $pdo->prepare("INSERT INTO usuarios(nome, email, senha)
-                    VALUES (?,?,?)");
+        $stmt = $pdo->prepare("INSERT INTO usuarios(nome, email, senha) VALUES (?,?,?)");
         if ($stmt->execute([$nome, $email, $senha])) {
             // DECLARAR OS PARAMETROS COMO ? PARA PREPARAR O BANCO
             header("location: index.php?cadastro=true");                                               // NA ESTRUTURA DA TABELA
@@ -55,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </nav>
     <div class="row">
         <div class="col-5 mt-5 mx-auto cadastro">
-            <form action="post">
+            <form method="post">
                 <h2 class="nomenclaturas">Bem-Vindo ao Cadastro de Novos Usuários</h2>
                 <form action="" method="post">
                     <div class="mb-3 text-center"> <!--Nome-->
@@ -77,6 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
