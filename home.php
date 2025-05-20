@@ -69,6 +69,23 @@ require_once("cabecalho.php"); //se der erro não execulta mais nada, mais segur
             <button class="btn novo"><i class="bi bi-plus-lg"></i> Novo</button>
             <button class="btn editar"><i class="bi bi-pencil-fill"></i> Editar</button>
         </div>
+
+            <h2 class="mb-3 nomenclaturas">SELECIONE UM PROFISSIONAL:</h2>
+
+        <div class="snap-container" id="listaServicos">
+            <div class="snap-item" onclick="selecionar(this, 'Corte')">
+                <img src="src/img/prestador_alexandre.jpg" alt="Alexandre Alves">
+                <div>Alexandre Alves</div>
+                <div class="servico-info">
+                </div>
+            </div>
+        </div>
+
+        <div class="dica">ARRASTE PARA O LADO PARA VER MAIS</div>
+        <div class="col-5 mx-auto mt-4 d-block gap-2">
+            <button class="btn novo"><i class="bi bi-plus-lg"></i> Novo</button>
+            <button class="btn editar"><i class="bi bi-pencil-fill"></i> Editar</button>
+        </div>
         <button id="enviar" class="btn btn-secondary col-5 mx-auto mt-4 d-block" onclick="enviarServicos()">Enviar</button>
 
     </div>
