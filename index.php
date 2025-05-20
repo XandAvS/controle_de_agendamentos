@@ -62,7 +62,7 @@
                     <?= $mensagem['erro'] ?>
                 </div>
             <?php endif; ?>
-            <?php if (isset($_GET['menssagem']) && ($mensagem == "acesso_negado")): ?>
+            <?php if (isset($_GET['mensagem']) && ($mensagem == "acesso_negado")): ?>
                 <div class="alert alert-danger mt-3 mb-3">
                     Você precisa informar seus dados de acesso para acessar o sistema!
                 </div>
