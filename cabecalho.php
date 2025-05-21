@@ -23,6 +23,7 @@ if (!$_SESSION['acesso']) {
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./src/css/estilos.css">
+    <link rel="stylesheet" href="./src/css/cartao.css">
 </head>
 
 <body>
@@ -37,10 +38,10 @@ if (!$_SESSION['acesso']) {
         </a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link text-light" href="">SERVIÇOS</a></li>
-                <li class="nav-item"><a class="nav-link text-light" href="">AGENDAMENTO</a></li>
-                <li class="nav-item"><a class="nav-link text-light" href="">PROFISSIONAIS</a></li>
-                <li class="nav-item"><a class="nav-link text-light" href="">CONTATO</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="servicos.php">SERVIÇOS</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="agendamentos.php">AGENDAMENTO</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="profissionais.php">PROFISSIONAIS</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="contato.php">CONTATO</a></li>
             </ul>
 
             <ul class="navbar-nav">

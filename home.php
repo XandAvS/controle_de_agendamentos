@@ -22,7 +22,7 @@ require_once("cabecalho.php"); //se der erro não execulta mais nada, mais segur
 <body>
 
     <div class="container">
-        <h2 class="mb-3 nomenclaturas">SELECIONE OS SERVIÇOS:</h2>
+        <h4 class="mb-3 nomenclaturas">SELECIONE OS SERVIÇOS:</h4>
 
         <div class="snap-container" id="listaServicos">
             <div class="snap-item" onclick="selecionar(this, 'Corte')">
@@ -32,67 +32,49 @@ require_once("cabecalho.php"); //se der erro não execulta mais nada, mais segur
                     <span>R$30,00</span><span>40min</span>
                 </div>
             </div>
-
-            <div class="snap-item" onclick="selecionar(this, 'Barba')">
-                <img src="src/img/slotly logo.png?text=Barba" alt="Barba">
-                <div>Barba</div>
-                <div class="servico-info">
-                    <span>R$30,00</span><span>40min</span>
-                </div>
-            </div>
-
-            <div class="snap-item" onclick="selecionar(this, 'Corte & Barba')">
-                <img src="src/img/slotly logo.png?text=Corte+e+Barba" alt="Corte & Barba">
-                <div>Corte & Barba</div>
-                <div class="servico-info">
-                    <span>R$60,00</span><span>40min</span>
-                </div>
-            </div>
-            <div class="snap-item" onclick="selecionar(this, 'Sobrancelha')">
-                <img src="src/img/slotly logo.png?text=Corte+e+Barba" alt="Sobrancelha">
-                <div>Sobrancelha</div>
-                <div class="servico-info">
-                    <span>R$15,00</span><span>20min</span>
-                </div>
-            </div>
-            <div class="snap-item" onclick="selecionar(this, 'Hidratação')">
-                <img src="src/img/slotly logo.png?text=Corte+e+Barba" alt="Hidratação">
-                <div>Hidratação</div>
-                <div class="servico-info">
-                    <span>R$10,00</span><span>20min</span>
-                </div>
-            </div>
         </div>
 
         <div class="dica">ARRASTE PARA O LADO PARA VER MAIS</div>
         <div class="col-5 mx-auto mt-4 d-block gap-2">
-            <button class="btn novo"><i class="bi bi-plus-lg"></i> Novo</button>
-            <button class="btn editar"><i class="bi bi-pencil-fill"></i> Editar</button>
+            <a href="novo_servicos.php" class="btn novo"><i class="bi bi-plus-lg"></i> Novo</a>
+            <a href="servicos.php" class="btn editar"><i class="bi bi-pencil-fill"></i> Editar</a>
+            <!--aqui vou criar uma pagina que vai aparecer todos os procedimentos cadsatrados e 
+            cada um dele vai ter a parte de editar-->
         </div>
 
-            <h2 class="mb-3 nomenclaturas">SELECIONE UM PROFISSIONAL:</h2>
+        <h4 class="mb-3 nomenclaturas">SELECIONE UM PROFISSIONAL:</h4>
 
         <div class="snap-container" id="listaServicos">
-            <div class="snap-item" onclick="selecionar(this, 'Corte')">
+            <div class="snap-item" onclick="selecionar(this, 'Alexandre Alves')">
                 <img src="src/img/prestador_alexandre.jpg" alt="Alexandre Alves">
                 <div>Alexandre Alves</div>
                 <div class="servico-info">
+                    <span>Cortes & Barba</span>
                 </div>
             </div>
         </div>
 
         <div class="dica">ARRASTE PARA O LADO PARA VER MAIS</div>
         <div class="col-5 mx-auto mt-4 d-block gap-2">
-            <button class="btn novo"><i class="bi bi-plus-lg"></i> Novo</button>
-            <button class="btn editar"><i class="bi bi-pencil-fill"></i> Editar</button>
+             <a href="novo_profissional.php" class="btn novo"><i class="bi bi-plus-lg"></i> Novo</a>
+            <a href="profissional.php" class="btn editar"><i class="bi bi-pencil-fill"></i> Editar</a>
+            
+            <!--aqui vou criar uma pagina que vai aparecer todos os profissionais cadsatrados e 
+            cada um dele vai ter a parte de editar-->
+        </div>
+        <div class="col-5 mt-5 mx-auto">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="data" class="form-label">Selecione o dia para o procedimento</label>
+                    <input type="date" id="data" name="data" class="form-control" required="">
+                </div>
+            </form>
         </div>
         <button id="enviar" class="btn btn-secondary col-5 mx-auto mt-4 d-block" onclick="enviarServicos()">Enviar</button>
 
     </div>
 
     <script>
-        const selecionados = [];
-
         function selecionar(element, nome) {
             element.classList.toggle('selecionado');
             if (selecionados.includes(nome)) {
@@ -100,16 +82,6 @@ require_once("cabecalho.php"); //se der erro não execulta mais nada, mais segur
             } else {
                 selecionados.push(nome);
             }
-        }
-
-        function enviarServicos() {
-            if (selecionados.length === 0) {
-                alert('Selecione pelo menos um serviço.');
-                return;
-            }
-
-            alert('Serviços selecionados:\n' + selecionados.join(', '));
-            // Aqui você pode enviar via AJAX ou fetch se quiser
         }
     </script>
 
