@@ -2,6 +2,18 @@
 //include("cabecalho.php"); // se tiver erro apresenta o erro, e roda o resto que não deu erro
 require_once("cabecalho.php"); //se der erro não execulta mais nada, mais seguro
 //require_onde verifica se o conteudo ja foi incuido e não repete
+function retornaServicos()
+{
+    require("conexao.php");
+    try {
+        $sql = "SELECT * FROM procedimentos";
+        $stmt = $pdo->query($sql);
+        return $stmt->fetchAll();
+    } catch (Exception $e) {
+        die("Erro ao consultar os Serviços Disponíveis: " . $e->getMessage());
+    }
+}
+$procedimentos = retornaServicos();
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -25,14 +37,19 @@ require_once("cabecalho.php"); //se der erro não execulta mais nada, mais segur
         <h4 class="mb-3 nomenclaturas">SELECIONE OS SERVIÇOS:</h4>
 
         <div class="snap-container" id="listaServicos">
-            <div class="snap-item" onclick="selecionar(this, 'Corte')">
-                <img src="src/img/slotly logo.png?text=Corte" alt="Corte">
-                <div>Corte</div>
+             <?php
+        foreach ($procedimentos as $pp): //vai percorrer as catecorias e a cada laço adiciona recebe o valor da variavel pp
+        ?>
+            <div class="snap-item" onclick="selecionar(this, '<?= $pp['nome']; ?>')">
+                <img src="src/img/slotly logo.png?text=Corte" alt="<?= $pp['nome']; ?>">
+                <div><?= $pp['nome']; ?></div>
                 <div class="servico-info">
-                    <span>R$30,00</span><span>40min</span>
+                    <span><?= $pp['preco']; ?></span><span><?= $pp['tempo']; ?></span>
                 </div>
-            </div>
+            </div> 
+            <?php endforeach; ?>
         </div>
+       
 
         <div class="dica">ARRASTE PARA O LADO PARA VER MAIS</div>
         <div class="col-5 mx-auto mt-4 d-block gap-2">
