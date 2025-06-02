@@ -2,18 +2,19 @@
 //include("cabecalho.php"); // se tiver erro apresenta o erro, e roda o resto que não deu erro
 require_once("cabecalho.php"); //se der erro não execulta mais nada, mais seguro
 //require_onde verifica se o conteudo ja foi incuido e não repete
-function retornaServicos()
+function retornaProfissionais()
 {
     require("conexao.php");
     try {
-        $sql = "SELECT * FROM procedimentos AS servicos";
+        $sql = "SELECT * FROM barbeiros";
         $stmt = $pdo->query($sql);
         return $stmt->fetchAll();
     } catch (Exception $e) {
-        die("Erro ao consultar os Serviços Disponíveis: " . $e->getMessage());
+        die("Erro ao consultar os profissionais: " . $e->getMessage());
     }
 }
-$servico = retornaServicos();
+
+$profissionais = retornaProfissionais();
 ?>
 <div class="col-5 mx-auto gap-2">
     <!--CRIAMOS AS TABELAS NO GERADOR E ADICIONAMOS NA PAGINA QUE CORRESPONDE-->
@@ -23,29 +24,24 @@ $servico = retornaServicos();
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Descrição</th>
-                <th>Valor</th>
-                <th>Tempo</th>
-                <th>Ações</th>
+                <th>Foto</th>
             </tr>
         </thead>
         <tbody>
 
             <tr>
                 <?php
-                foreach ($servico as $s): //$p recebe a variavel a cada laço que passa,1,2,3 ...
+                foreach ($profissionais as $p): //$p recebe a variavel a cada laço que passa,1,2,3 ...
                     //mostragem do produto.
 
                 ?>
-                    <td><?= $s['id'] ?></td>
-                    <td><?= $s['nome'] ?></td>
-                    <td><?= $s['descricao'] ?></td>
-                    <td><?= $s['preco'] ?></td>
-                    <td><?= $s['tempo'] ?></td>
+                    <td><?= $p['id'] ?></td>
+                    <td><?= $p['nome'] ?></td>
+                    <td><?= $p['foto'] ?></td>
                     <td>
                         <div class="d-flex gap-2">
-                            <a href="editar_servicos.php?id=<?= $s['id'] ?>" class="btn btn-warning">Editar</a>
-                            <a href="consultar_servicos.php?id=<?= $s['id'] ?>" class="btn btn-info">Consultar</a>
+                            <a href="editar_profissional.php?id=<?= $p['id'] ?>" class="btn btn-warning">Editar</a>
+                            <a href="consultar_profissional.php?id=<?= $p['id'] ?>" class="btn btn-info">Consultar</a>
                         </div>
                     </td>
             </tr>
