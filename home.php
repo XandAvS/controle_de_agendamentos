@@ -27,12 +27,26 @@ function retornaProfissionais()
 
 $profissionais = retornaProfissionais();
 ?>
-<!DOCTYPE html>
-<html lang="pt-BR">
+<div class="container">
+    <div>
+        <h4 class="mb-3 nomenclaturas">SELECIONE UM PROFISSIONAL:</h4>
+        <div class="snap-container" id="listaprofissionais">
+            <?php foreach ($profissionais as $p): ?>
+                <div class="snap-item" onclick="selecionar(this, '<?= $p['nome']; ?>')">
+                    <img src="src/img/<?= $p['foto']; ?>" alt="<?= $p['nome']; ?>" class="img-fluid" style="height:100px;">
+                    <div><?= $p['nome']; ?></div>
+                </div>
+            <?php endforeach; ?>
+        </div>
 
-    <div class="container">
+        <div class="dica">ARRASTE PARA O LADO PARA VER MAIS</div>
+        <div class="col-5 mx-auto mt-4 d-block gap-2">
+            <a href="novo_profissional.php" class="btn novo"><i class="bi bi-plus-lg"></i> Novo</a>
+            <a href="profissionais.php" class="btn editar"><i class="bi bi-pencil-fill"></i> Editar</a>
+        </div>
+    </div>
+    <div>
         <h4 class="mb-3 nomenclaturas">SELECIONE OS SERVIÇOS:</h4>
-
         <div class="snap-container" id="listaServicos">
             <?php
             foreach ($procedimentos as $pp):
@@ -52,49 +66,33 @@ $profissionais = retornaProfissionais();
             <a href="novo_servicos.php" class="btn novo"><i class="bi bi-plus-lg"></i> Novo</a>
             <a href="servicos.php" class="btn editar"><i class="bi bi-pencil-fill"></i> Editar</a>
         </div>
-
-        <h4 class="mb-3 nomenclaturas">SELECIONE UM PROFISSIONAL:</h4>
-
-        <div class="snap-container" id="listaprofissionais">
-            <?php foreach ($profissionais as $p): ?>
-                <div class="snap-item" onclick="selecionar(this, '<?= $p['nome']; ?>')">
-                    <img src="src/img/<?= $p['foto']; ?>" alt="<?= $p['nome']; ?>" class="img-fluid" style="height:100px;">
-                    <div><?= $p['nome']; ?></div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-
-        <div class="dica">ARRASTE PARA O LADO PARA VER MAIS</div>
-        <div class="col-5 mx-auto mt-4 d-block gap-2">
-            <a href="novo_profissional.php" class="btn novo"><i class="bi bi-plus-lg"></i> Novo</a>
-            <a href="profissionais.php" class="btn editar"><i class="bi bi-pencil-fill"></i> Editar</a>
-        </div>
-
-        <div class="col-5 mt-5 mx-auto">
-            <form method="post">
-                <div class="mb-3">
-                    <label for="data" class="form-label">Selecione o dia para o procedimento</label>
-                    <input type="date" id="data" name="data" class="form-control" required>
-                </div>
-            </form>
-        </div>
-
-        <button id="enviar" class="btn btn-secondary col-5 mx-auto mt-4 d-block" onclick="enviarServicos()">Enviar</button>
-
     </div>
 
-    <script>
-        const selecionados = [];
+    <div class="col-5 mt-5 mx-auto">
+        <form method="post">
+            <div class="mb-3">
+                <label for="data" class="form-label">Selecione o dia para o procedimento</label>
+                <input type="date" id="data" name="data" class="form-control" required>
+            </div>
+        </form>
+    </div>
 
-        function selecionar(element, nome) {
-            element.classList.toggle('selecionado');
-            if (selecionados.includes(nome)) {
-                selecionados.splice(selecionados.indexOf(nome), 1);
-            } else {
-                selecionados.push(nome);
-            }
+    <button id="enviar" class="btn btn-secondary col-5 mx-auto mt-4 d-block" onclick="enviarServicos()">Enviar</button>
+
+</div>
+
+<script>
+    const selecionados = [];
+
+    function selecionar(element, nome) {
+        element.classList.toggle('selecionado');
+        if (selecionados.includes(nome)) {
+            selecionados.splice(selecionados.indexOf(nome), 1);
+        } else {
+            selecionados.push(nome);
         }
-    </script>
+    }
+</script>
 
 </body>
 
