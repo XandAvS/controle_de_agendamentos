@@ -27,7 +27,8 @@ function retornaProfissionais()
 
 $profissionais = retornaProfissionais();
 ?>
-
+<!DOCTYPE html>
+<html lang="pt-BR">
 
     <div class="container">
         <h4 class="mb-3 nomenclaturas">SELECIONE OS SERVIÇOS:</h4>
