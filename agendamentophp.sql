@@ -35,3 +35,23 @@ CREATE TABLE barbeiro_servico (
 barbeiro_id: ID do barbeiro (ligado à tabela barbeiros).
 servico_id: ID do procedimento (ligado à tabela procedimentos).
 PRIMARY KEY (barbeiro_id, servico_id): Garante que um mesmo serviço não seja duplicado para o mesmo barbeiro.
+
+CREATE TABLE agendamentos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  cliente_nome VARCHAR(100) NOT NULL,
+  data_agendada DATE NOT NULL,
+  hora TIME NOT NULL,
+  barbeiro_id INT NOT NULL,
+  usuario_id INT NOT NULL,
+ 
+  FOREIGN KEY (barbeiro_id) REFERENCES barbeiros(id),
+  FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+CREATE TABLE agendamento_servico (
+    agendamento_id INT,
+    servico_id INT,
+    PRIMARY KEY (agendamento_id, servico_id),
+    FOREIGN KEY (agendamento_id) REFERENCES agendamentos(id),
+    FOREIGN KEY (servico_id) REFERENCES procedimentos(id)
+);
